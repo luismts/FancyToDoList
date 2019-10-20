@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 prism:ViewModelLocator.AutowireViewModel="True"
+                 x:Class="FancyTodoList.Views.AddCategoryItemPage">
+
+    <pages:PopupPage.Content>
+
+        <Frame BackgroundColor="White" Padding="16,8" Margin="16" CornerRadius="10" VerticalOptions="Center" HorizontalOptions="FillAndExpand" >
+
+            <StackLayout HorizontalOptions="FillAndExpand">
+                <Label Text="Categoria" HorizontalOptions="FillAndExpand" />
+                <Entry x:Name="entryCategoryName" Placeholder="Nombre" HorizontalOptions="FillAndExpand" />
+                <Button Text="Agregar Categoria" TextColor="White" BackgroundColor="#20abbd" Clicked="Button_OnClicked" HorizontalOptions="FillAndExpand" />
+            </StackLayout>
+        </Frame>
+    </pages:PopupPage.Content>
+
+</pages:PopupPage>

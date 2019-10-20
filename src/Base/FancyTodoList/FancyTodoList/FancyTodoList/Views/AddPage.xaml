@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="FancyTodoList.Views.AddPage" Title="{Binding Title}">
+
+    <ContentPage.ToolbarItems >
+        <ToolbarItem  Icon="ic_upload.png" Command="{Binding AddItemCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout Padding="16" Spacing="8">
+            <Entry Text="{Binding Item.Title}" Placeholder="Tarea" />
+            <Picker Title="Categoria" SelectedIndex="{Binding IndexItemCategory, Mode=TwoWay}" ItemsSource="{Binding Categories}" ItemDisplayBinding="{Binding DisplayName}" />
+            <DatePicker Date="{Binding Item.Date}" />
+            <Editor Text="{Binding Item.Description}" VerticalOptions="FillAndExpand" />
+            <!--<Button Text="Agregar" TextColor="White" BackgroundColor="#20abbd" VerticalOptions="End" />-->
+        </StackLayout>
+    </ContentPage.Content>
+  
+</ContentPage>

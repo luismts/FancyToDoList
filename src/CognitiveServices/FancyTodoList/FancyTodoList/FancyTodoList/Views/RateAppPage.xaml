@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FancyTodoList.Views.RateAppPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    Title="Calificar la app"
+    prism:ViewModelLocator.AutowireViewModel="True">
+
+    <StackLayout Margin="20">
+        <Button Clicked="OnTakePhotoButtonClicked" Text="Take Photo and Analyze" />
+        <Image x:Name="image" />
+        <ActivityIndicator x:Name="activityIndicator" />
+        <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+            <Label Text="Emotion:" />
+            <Label x:Name="emotionResultLabel" />
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>

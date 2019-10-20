@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FancyTodoList.Views.MasterPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:img="clr-namespace:FancyTodoList.Helpers;assembly=FancyTodoList"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    x:Name="this"
+    Title="Menu"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="White">
+
+    <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+            <ListView
+                BackgroundColor="Transparent"
+                HasUnevenRows="True"
+                ItemsSource="{Binding MenuItems}"
+                SeparatorColor="Transparent"
+                VerticalOptions="FillAndExpand">
+
+                <ListView.Header>
+                    <StackLayout>
+
+                        <!--  Background  -->
+                        <Image
+                            Aspect="Fill"
+                            HeightRequest="175"
+                            Source="{img:ImageResource FancyTodoList.Images.banner_todo_list.jpg}" />
+
+                        <Grid ColumnSpacing="0" RowSpacing="0">
+
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped" />
+                            </Grid.GestureRecognizers>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                            </Grid.RowDefinitions>
+
+                            <StackLayout
+                                Grid.Column="0"
+                                Padding="20,0,0,0"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Center">
+
+                                <Image
+                                    HeightRequest="48"
+                                    Source="ic_folder"
+                                    WidthRequest="48" />
+
+                            </StackLayout>
+                            <Label
+                                Grid.Column="1"
+                                FontSize="Medium"
+                                Text="Todas"
+                                TextColor="Gray"
+                                VerticalOptions="Center" />
+
+                            <BoxView
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                BackgroundColor="Gray"
+                                HeightRequest="1"
+                                HorizontalOptions="FillAndExpand"
+                                Opacity="0.2"
+                                VerticalOptions="End" />
+
+                        </Grid>
+
+                    </StackLayout>
+                </ListView.Header>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid ColumnSpacing="0" RowSpacing="0">
+
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding Source={x:Reference this}, Path=BindingContext.ShowItemsByCategoryCommand}"
+                                        CommandParameter="{Binding .}"
+                                        Tapped="TapGestureRecognizer_Tapped" />
+                                </Grid.GestureRecognizers>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50" />
+                                </Grid.RowDefinitions>
+
+                                <StackLayout
+                                    Grid.Column="0"
+                                    Padding="20,0,0,0"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="Center">
+
+                                    <Image
+                                        HeightRequest="48"
+                                        Source="ic_folder"
+                                        WidthRequest="48" />
+
+                                </StackLayout>
+                                <Label
+                                    Grid.Column="1"
+                                    FontSize="Medium"
+                                    Text="{Binding DisplayName}"
+                                    TextColor="Gray"
+                                    VerticalOptions="Center" />
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+                <ListView.Footer>
+                    <BoxView HeightRequest="100" />
+                </ListView.Footer>
+
+
+            </ListView>
+
+            <!--  footer  -->
+            <StackLayout
+                Margin="-5,0"
+                Padding="0"
+                BackgroundColor="#12496d"
+                HeightRequest="100"
+                HorizontalOptions="Fill"
+                VerticalOptions="EndAndExpand">
+
+                <Button
+                    Command="{Binding ShowAddCategoryPageCommand}"
+                    HorizontalOptions="FillAndExpand"
+                    Text="Crea una nueva categoria"
+                    TextColor="White"
+                    TranslationY="-2" />
+
+                <!--  Datos de la app  -->
+                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand">
+
+                    <Label FontAttributes="None" FontSize="12">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span ForegroundColor="#8c8c8c" Text="Creado por " />
+                                    <Span ForegroundColor="#20abbd" Text="Luis Matos" />
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+
+                    <Label
+                        Margin="0,-10,0,0"
+                        FontSize="13"
+                        HorizontalOptions="Center"
+                        Text="Version 1.0.0"
+                        TextColor="#e2e0e0" />
+
+                </StackLayout>
+            </StackLayout>
+
+        </Grid>
+    </ContentPage.Content>
+
+</ContentPage>

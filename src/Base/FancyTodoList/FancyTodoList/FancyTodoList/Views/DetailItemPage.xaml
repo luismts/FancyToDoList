@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="FancyTodoList.Views.DetailItemPage" Title="Detalles">
+
+    <ContentPage.ToolbarItems >
+        <ToolbarItem  Icon="ic_check.png" Command="{Binding CompletedItemCommand}"  />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView Padding="16" >
+            <StackLayout >
+                <Label Text="{Binding Item.Title}" FontSize="Medium" TextColor="Black" FontAttributes="Bold" />
+                <Label Text="{Binding Item.Category}" FontSize="Medium" TextColor="Black" FontAttributes="Bold" />
+                <Label Text="{Binding Item.Description}" FontSize="Small" TextColor="Gray" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+    
+  
+</ContentPage>

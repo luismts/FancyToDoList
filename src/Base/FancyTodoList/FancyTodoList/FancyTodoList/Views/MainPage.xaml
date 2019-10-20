@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:img="clr-namespace:SharedResources.Helpers;assembly=FancyTodoList"
+             xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
+             xmlns:converters="clr-namespace:FancyTodoList.Helpers.Converters;assembly=FancyTodoList"
+             xmlns:controls="clr-namespace:FancyTodoList.Controls;assembly=FancyTodoList"    
+             x:Class="FancyTodoList.Views.MainPage" x:Name="this" Title="{Binding Title}" >
+
+    <ContentPage.ToolbarItems >
+        <ToolbarItem Icon="{Binding IconNotification}" Command="{Binding ShowNotificationsCommand}" />
+        <ToolbarItem Text="Eliminar esta Categoria" Order="Secondary" Command="{Binding RemoveCategoryCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <converters:InverseBoolConverter x:Key="inverseBoolConverter" />
+            <converters:StringToDateTimeConverter x:Key="dateTimeConverter" />
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+        <ContentPage.Content>
+
+        <Grid>
+            <ListView x:Name="listItems" ItemsSource="{Binding ItemsByCategory}" HasUnevenRows="True"
+                     SeparatorColor="Transparent" BackgroundColor="Transparent" VerticalOptions="FillAndExpand">
+
+                <ListView.Header>
+                    <StackLayout Padding="16">
+
+                        <controls:CheckBox DefaultText="Completar todas las tareas" Checked="{Binding CompleteAllTask}" Color="#20abbd"  CheckedChanged="MainCheckBox_OnCheckedChanged" />
+
+                    </StackLayout>
+                </ListView.Header>
+
+                <ListView.ItemTemplate >
+                    <DataTemplate >
+
+                        <controls:CustomViewCell IsVisible="{Binding Completed, Converter={StaticResource inverseBoolConverter}}"    >
+
+                            <Frame Margin="16,2,16,2" BackgroundColor="White"  Padding="8,0,0,0"   >
+
+                                <StackLayout Spacing="8" Orientation="Horizontal"  HeightRequest="66" >
+
+                                    <controls:CheckBox Checked="{Binding Completed}" Color="#20abbd" CheckedChanged="CheckBox_OnCheckedChanged"  />
+
+                                    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" >
+                                        
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer NumberOfTapsRequired="2" CommandParameter="{Binding .}"
+                                                                  Command="{Binding Source={x:Reference this}, Path=BindingContext.MenuActionCommand}" />
+                                            <TapGestureRecognizer Command="{Binding Source={x:Reference this}, Path=BindingContext.SelectedItemCommand}" CommandParameter="{Binding .}" />
+                                        </StackLayout.GestureRecognizers>
+
+                                        <Label Text="{Binding Title}" FontSize="Medium" TextColor="Gray" FontAttributes="Bold" LineBreakMode="TailTruncation" TranslationY="5" />
+                                        <Label Text="{Binding Date, Converter={StaticResource dateTimeConverter}}" TextColor="#20abbd" TranslationY="-2" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </controls:CustomViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+                <ListView.Footer>
+                    <StackLayout Margin="0,0,0,56">
+
+                        <Button Text="TAREAS COMPLETADAS" FontSize="Small" TextColor="White" BackgroundColor="#20abbd" HorizontalOptions="CenterAndExpand" Margin="0,8" HeightRequest="36" />
+
+                        <controls:CustomRepeaterView ItemsSource="{Binding ItemsByCategory}"  Opacity="0.5" VerticalOptions="FillAndExpand" >
+
+                            <controls:CustomRepeaterView.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame Margin="16,2,16,2" BackgroundColor="White"  Padding="8,0,0,0" IsVisible="{Binding Completed}" >
+
+                                        <StackLayout Spacing="8" Orientation="Horizontal"  HeightRequest="66" >
+
+                                            <controls:CheckBox Checked="{Binding Completed}" Color="#20abbd"  CheckedChanged="CheckBox_OnCheckedChanged" />
+
+                                            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" >
+
+                                                <StackLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer NumberOfTapsRequired="2" CommandParameter="{Binding .}"
+                                                                          Command="{Binding Source={x:Reference this}, Path=BindingContext.MenuActionCommand}" />
+                                                    <TapGestureRecognizer Command="{Binding Source={x:Reference this}, Path=BindingContext.SelectedItemCommand}" CommandParameter="{Binding .}" />
+                                                </StackLayout.GestureRecognizers>
+
+                                                <Label Text="{Binding Title}" FontSize="Medium" TextColor="Gray" FontAttributes="Bold" LineBreakMode="TailTruncation" TranslationY="5" />
+                                                <Label Text="{Binding Date, Converter={StaticResource dateTimeConverter}}" TextColor="#20abbd" TranslationY="-2" />
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Frame>
+                                </DataTemplate>
+                            </controls:CustomRepeaterView.ItemTemplate>
+                        </controls:CustomRepeaterView>
+                    </StackLayout>
+                </ListView.Footer>
+
+
+
+            </ListView>
+
+            <controls:FloatingActionButton Image="ic_addphotos.png" ButtonColor="White"  WidthRequest="50" HeightRequest="50" Margin="16"
+                                           Command="{Binding NavigateCommand}" CommandParameter="AddPage" HorizontalOptions="End" VerticalOptions="End"   />
+        </Grid>
+
+
+    </ContentPage.Content>
+
+</ContentPage>
+
+

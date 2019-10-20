@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FancyTodoList.Views.AddPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    x:Name="this"
+    Title="{Binding Title}"
+    prism:ViewModelLocator.AutowireViewModel="True">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding AddItemCommand}" Icon="ic_check.png" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout Padding="16" Spacing="8">
+
+
+
+            <Entry Placeholder="Tarea" Text="{Binding Item.Title}" />
+            <Picker
+                Title="Categoria"
+                ItemDisplayBinding="{Binding DisplayName}"
+                ItemsSource="{Binding Categories}"
+                SelectedIndex="{Binding IndexItemCategory, Mode=TwoWay}" />
+            <DatePicker Date="{Binding Item.Date}" />
+
+            <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                <Editor
+                    AbsoluteLayout.LayoutBounds="1,1,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    HorizontalOptions="FillAndExpand"
+                    Text="{Binding Item.Description}"
+                    VerticalOptions="FillAndExpand" />
+
+                <ActivityIndicator
+                    x:Name="activityIndicator"
+                    AbsoluteLayout.LayoutBounds=".95,.95,16,16"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    IsRunning="True"
+                    IsVisible="False" />
+            </AbsoluteLayout>
+
+
+            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                <Button
+                    x:Name="rocordButton"
+                    Clicked="OnRecognizeSpeechButtonClicked"
+                    Image="recording.png" />
+                <Button
+                    x:Name="spellsheckButton"
+                    Clicked="OnSpellCheckButtonClicked"
+                    Image="spellcheck.png" />
+                <Button
+                    x:Name="translationButton"
+                    Clicked="OnTranslateButtonClicked"
+                    Image="translate.png" />
+            </StackLayout>
+
+
+            <!--<Button Text="Agregar" TextColor="White" BackgroundColor="#20abbd" VerticalOptions="End" />-->
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>
