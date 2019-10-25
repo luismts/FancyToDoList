@@ -5,11 +5,10 @@ Task Manager and Activity List. Organize your to-do lists, work, shopping, movie
 ## Screenshots
 
 <p aling="center">
-<img src="https://github.com/luismts/InstagramReplication/blob/master/Screenshots/InstagramReplication_home.png" width="30%" /> <img src="https://github.com/luismts/InstagramReplication/blob/master/Screenshots/InstagramReplication_search.png" width="30%" /> 
-<img src="https://github.com/luismts/InstagramReplication/blob/master/Screenshots/InstagramReplication_likes.png" width="30%" /> <img src="https://github.com/luismts/InstagramReplication/blob/master/Screenshots/InstagramReplication_profileGrid.png" width="30%" /> 
-<img src="https://github.com/luismts/InstagramReplication/blob/master/Screenshots/InstagramReplication_profileList.png" width="30%" /> <img src="https://github.com/luismts/InstagramReplication/blob/master/Screenshots/InstagramReplication_otherPhotos.png" width="30%" /> 
-<img src="https://github.com/luismts/InstagramReplication/blob/master/Screenshots/InstagramReplication_options.png" width="30%" /> <img src="https://github.com/luismts/InstagramReplication/blob/master/Screenshots/InstagramReplication_dm.png" width="30%" /> 
-<img src="https://github.com/luismts/InstagramReplication/blob/master/Screenshots/InstagramReplication_describePeople.png" width="30%" />
+<img src="https://github.com/luismts/FancyToDoList/blob/master/src/CognitiveServices/FancyTodoList/Screenshots/30768057_1802388703146973_1317554103_o.png" width="30%" /> <img src="https://github.com/luismts/FancyToDoList/blob/master/src/CognitiveServices/FancyTodoList/Screenshots/todolist_menu.png" width="30%" /> 
+<img src="https://github.com/luismts/FancyToDoList/blob/master/src/CognitiveServices/FancyTodoList/Screenshots/todolist_home.png" width="30%" /> <img src="https://github.com/luismts/FancyToDoList/blob/master/src/CognitiveServices/FancyTodoList/Screenshots/30768101_1802388739813636_450436844_o.png" width="30%" /> 
+<img src="https://github.com/luismts/FancyToDoList/blob/master/src/CognitiveServices/FancyTodoList/Screenshots/30771538_1802388783146965_387739601_o.png" width="30%" /> <img src="https://github.com/luismts/FancyToDoList/blob/master/src/CognitiveServices/FancyTodoList/Screenshots/todolist_create.png" width="30%" /> 
+<img src="https://github.com/luismts/FancyToDoList/blob/master/src/CognitiveServices/FancyTodoList/Screenshots/todolist_notification.png" width="30%" /> 
 </p>
 
 ## Functionality
